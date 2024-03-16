@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 const theme = {
   colors: {
     textColor: "#121417",
+    textHoverColor: "#8a8a89",
     themeOrange: "#F4C550",
     themeHoverOrange: "#FBE9BA",
     themeGrey: "#9FBAAE",
