@@ -3,10 +3,6 @@ import styled from "styled-components";
 export const FooterContainer = styled.div`
   padding: 20px 0;
   border-top: 1px solid black;
-`;
-
-export const ElementsContainer = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

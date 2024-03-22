@@ -1,11 +1,7 @@
 import confetti from "canvas-confetti";
 
-import {
-  ElementsContainer,
-  FooterContainer,
-  A,
-  FireBtn,
-} from "./Footer.styled.js";
+import { FooterContainer, A, FireBtn } from "./Footer.styled.js";
+import { Container } from "../../CommonStyles.styled.js";
 
 export const Footer = () => {
   const onBtnClick = () => {
@@ -23,8 +19,8 @@ export const Footer = () => {
 
   return (
     <footer>
-      <FooterContainer>
-        <ElementsContainer>
+      <Container>
+        <FooterContainer>
           <p>
             &#169; Created by{" "}
             <A
@@ -36,8 +32,8 @@ export const Footer = () => {
             </A>
           </p>
           <FireBtn onClick={onBtnClick}>Fire</FireBtn>
-        </ElementsContainer>
-      </FooterContainer>
+        </FooterContainer>
+      </Container>
     </footer>
   );
 };

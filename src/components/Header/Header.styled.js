@@ -32,8 +32,13 @@ export const SvgLogin = styled.svg`
 
 export const NavContainer = styled.nav`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const LogoLink = styled(NavLink)`
