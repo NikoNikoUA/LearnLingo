@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Modal from "react-modal";
 
+Modal.setAppElement("#root");
+
 export const CardContainer = styled.div`
   padding: 24px;
   border-radius: 24px;
@@ -261,10 +263,11 @@ export const TrialBtn = styled.button`
 `;
 
 export const CustomModal = styled(Modal)`
+  overflow: auto;
   position: relative;
-  border-radius: 30px;
+  border-radius: 12px;
   max-width: 599px;
-  max-height: 971px;
+  height: 90%;
   background-color: white;
   top: 50%;
   left: 50%;

@@ -14,8 +14,28 @@ body {
 font-size: 16px;
 padding: 20px 64px 32px;
 max-width: 1440px;
-background-color: white;
 
+
+ ::-webkit-scrollbar {
+    width: 8px; 
+ 
+  }
+
+ 
+::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+
+ 
+  ::-webkit-scrollbar-thumb {
+    background: rgb(251, 233, 186); 
+    border-radius: 12px; 
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(251, 233, 186, 0.8); 
+  }
 
 
 }

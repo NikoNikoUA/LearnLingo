@@ -1,10 +1,56 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import icons from "../../../sprite.svg";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+
+import {
+  CloseBtn,
+  MainHeading,
+  Text,
+  TeacherContainer,
+  Img,
+  HeaderThree,
+  Name,
+  Question,
+  InputContainer,
+  BtnBook,
+} from "./TrialLessonForm.styled";
+import { useState } from "react";
 
 export const TrialLessonForm = ({ teacher, closeModal }) => {
+  const [selectedValue, setSelectedValue] = useState("career");
   const { avatar_url, name, surname } = teacher;
   console.log(teacher);
+
+  const buttonColor = [
+    {
+      value: "Career and business",
+      color: "#F4C550",
+    },
+    {
+      value: "Lessons for kids",
+      color: "#F4C550",
+    },
+    {
+      value: "Living abroad",
+      color: "#F4C550",
+    },
+    {
+      value: "Exams and coursework",
+      color: "#F4C550",
+    },
+    {
+      value: "Culture, travel or hobby",
+      color: "#F4C550",
+    },
+  ];
+
+  const onRadioChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
   const TrialLessonSchema = Yup.object().shape({
     reason: Yup.string(),
@@ -24,52 +70,67 @@ export const TrialLessonForm = ({ teacher, closeModal }) => {
       validationSchema={TrialLessonSchema}
     >
       <Form>
-        <button type="button" onClick={closeModal}>
+        <CloseBtn type="button" onClick={closeModal}>
           <svg width="32px" height="32px">
             <use href={`${icons}#icon-modal-cross`}></use>
           </svg>
-        </button>
-        <h1>Book trial lesson</h1>
-        <p>
+        </CloseBtn>
+        <MainHeading>Book trial lesson</MainHeading>
+        <Text>
           Our experienced tutor will assess your current language level, discuss
           your learning goals, and tailor the lesson to your specific needs.
-        </p>
-        <div>
+        </Text>
+        <TeacherContainer>
           <div>
-            <img src={avatar_url} height="32px" width="32px" alt="teacher" />
+            <Img src={avatar_url} height="44px" width="44px" alt="teacher" />
           </div>
           <div>
-            <p>Your teacher</p>
-            <p>
-              {name}
+            <HeaderThree>Your teacher</HeaderThree>
+            <Name>
+              {name}&nbsp;
               {surname}
-            </p>
+            </Name>
           </div>
-        </div>
-        <h2>What is your main reason for learning English?</h2>
-        <div>
-          <label>
-            <Field type="radio" name="reason" value="career" />
-            Career and business
-          </label>
-          <label>
-            <Field type="radio" name="reason" value="lesson" />
-            Lesson for kids
-          </label>
-          <label>
-            <Field type="radio" name="reason" value="living" />
-            Living abroad
-          </label>
-          <label>
-            <Field type="radio" name="reason" value="exams" />
-            Exams and coursework
-          </label>
-          <label>
-            <Field type="radio" name="reason" value="culture" />
-            Culture, travel or hobby
-          </label>
-        </div>
-        <div>
+        </TeacherContainer>
+        <Question>What is your main reason for learning English?</Question>
+        <FormControl>
+          <RadioGroup>
+            {buttonColor.map((button) => (
+              <FormControlLabel
+                name="reason"
+                key={button.value}
+                sx={{
+                  color: `${(props) => props.theme.colors.textColor}`,
+                  marginBottom: "16px",
+                  padding: 0,
+                  "& .Mui-checked.MuiRadio-root": {
+                    color: button.color,
+                  },
+                  "& .MuiFormControlLabel-label": {
+                    fontSize: 16,
+                    letterSpacing: "0.02rem",
+                  },
+                  "& .MuiButtonBase-root.MuiRadio-root": {
+                    color: `${(props) => props.theme.colors.textHoverColor}`,
+                    padding: 0,
+                    backgroundColor:
+                      selectedValue === button.value
+                        ? "transparent"
+                        : `${(props) => props.theme.colors.textHoverColor}`,
+                  },
+                  "& .MuiTypography-root": {
+                    marginLeft: 1,
+                  },
+                }}
+                value={button.value}
+                control={<Radio />}
+                label={button.value}
+                onChange={onRadioChange}
+              />
+            ))}
+          </RadioGroup>
+        </FormControl>
+        <InputContainer>
           <label htmlFor="name"></label>
           <ErrorMessage name="name" component="div" />
           <Field name="name" placeholder="Full name" />
@@ -81,13 +142,13 @@ export const TrialLessonForm = ({ teacher, closeModal }) => {
           <label htmlFor="phone"></label>
           <ErrorMessage name="phone" component="div" />
           <Field name="phone" placeholder="Phone number" />
-        </div>
-        <button
+        </InputContainer>
+        <BtnBook
           type="button"
           onClick={() => (window.location.href = "tel:+380730000000")}
         >
           Book
-        </button>
+        </BtnBook>
       </Form>
     </Formik>
   );
