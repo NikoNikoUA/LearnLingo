@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ErrorMessage } from "formik";
 
 export const CloseBtn = styled.button`
   background-color: transparent;
@@ -67,6 +68,7 @@ export const Question = styled.h2`
 `;
 
 export const InputContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,4 +124,25 @@ export const BtnBook = styled.button`
     background: ${(props) => props.theme.colors.themeHoverOrange};
     color: ${(props) => props.theme.colors.textHoverColor};
   }
+`;
+
+export const Error1 = styled(ErrorMessage)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: red;
+`;
+
+export const Error2 = styled(ErrorMessage)`
+  position: absolute;
+  top: 90px;
+  left: 0;
+  color: red;
+`;
+
+export const Error3 = styled(ErrorMessage)`
+  position: absolute;
+  top: 180px;
+  left: 0;
+  color: red;
 `;
