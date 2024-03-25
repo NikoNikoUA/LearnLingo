@@ -1,4 +1,4 @@
-import { Formik, Field, Form } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import icons from "../../../sprite.svg";
 import Radio from "@mui/material/Radio";
@@ -20,6 +20,9 @@ import {
   Error1,
   Error2,
   Error3,
+  Label,
+  InputField,
+  DIV,
 } from "./TrialLessonForm.styled";
 import { useState } from "react";
 
@@ -59,9 +62,9 @@ export const TrialLessonForm = ({ teacher, closeModal }) => {
   const TrialLessonSchema = Yup.object().shape({
     radioGroup: Yup.string().required("A radio option is required"),
     name: Yup.string()
-      .min(2, "Name is too short!")
-      .max(32, "Name is too long!")
-      .required("Name is required!")
+      .min(2, "Name is too short")
+      .max(32, "Name is too long")
+      .required("Name is required")
       .lowercase()
       .trim(),
     email: Yup.string()
@@ -72,7 +75,7 @@ export const TrialLessonForm = ({ teacher, closeModal }) => {
       })
       .required("Email is required"),
     phone: Yup.string()
-      .matches(UkrRegExp, "Phone number is not valid")
+      .matches(UkrRegExp, "Please enter +38(XXX)XXXXXXX")
       .required("A phone number is required"),
   });
 
@@ -156,17 +159,23 @@ export const TrialLessonForm = ({ teacher, closeModal }) => {
             </RadioGroup>
           </FormControl>
           <InputContainer>
-            <label htmlFor="name"></label>
-            <Error1 name="name" component="div" />
-            <Field name="name" placeholder="Full name" />
+            <DIV>
+              <Error1 name="name" component="div" />
+              <InputField name="name" placeholder=" " />
+              <Label htmlFor="name">Full name</Label>
+            </DIV>
 
-            <label htmlFor="email"></label>
-            <Error2 name="email" component="div" />
-            <Field name="email" placeholder="Email" />
+            <DIV>
+              <Error2 name="email" component="div" />
+              <InputField name="email" placeholder=" " />
+              <Label htmlFor="email">Email</Label>
+            </DIV>
 
-            <label htmlFor="phone"></label>
-            <Error3 name="phone" component="div" />
-            <Field name="phone" placeholder="Phone number" />
+            <DIV>
+              <Error3 name="phone" component="div" />
+              <InputField name="phone" placeholder=" " />
+              <Label htmlFor="phone">Phone number</Label>
+            </DIV>
           </InputContainer>
           <BtnBook
             type="submit"

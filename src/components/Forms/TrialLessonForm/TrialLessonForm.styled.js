@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ErrorMessage } from "formik";
+import { ErrorMessage, Field } from "formik";
 
 export const CloseBtn = styled.button`
   background-color: transparent;
@@ -76,9 +76,10 @@ export const InputContainer = styled.div`
   gap: 18px;
 
   margin-bottom: 40px;
+  margin-top: 35px;
 
   & > input {
-    border: 1px solid rgba(18, 20, 23, 0.1);
+    /* border: 1px solid rgba(18, 20, 23, 0.1);
     border-radius: 12px;
     padding: 16px 16px 16px 18px;
     width: 100%;
@@ -87,16 +88,82 @@ export const InputContainer = styled.div`
     font-weight: 400;
     line-height: 1.375;
     color: ${(props) => props.theme.colors.textColor};
-    transition: all 250ms ease;
+    transition: all 250ms ease; */
 
-    &::placeholder {
+    /* &::placeholder {
       color: ${(props) => props.theme.colors.textColor};
-    }
+    } */
 
-    &:hover {
+    /* &:hover {
       border: 1px solid ${(props) => props.theme.colors.themeOrange};
+    } */
+  }
+`;
+
+export const Label = styled.label`
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  transition: 0.3s;
+  pointer-events: none;
+  color: ${(props) => props.theme.colors.textColor};
+`;
+
+export const InputField = styled(Field)`
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 16px 16px 18px;
+  width: 100%;
+  height: 54px;
+  outline: none;
+
+  font-weight: 400;
+  line-height: 1.375;
+  color: ${(props) => props.theme.colors.textColor};
+  transition: all 250ms ease;
+  background-color: white;
+
+  &:hover {
+    border: 1px solid ${(props) => props.theme.colors.themeOrange};
+
+    & + ${Label} {
+      color: orange;
     }
   }
+
+  &:focus {
+    border: 1px solid ${(props) => props.theme.colors.themeOrange};
+    background-color: transparent;
+
+    & + ${Label} {
+      color: ${(props) => props.theme.colors.themeOrange};
+      top: -10px;
+      font-size: 14px;
+      background-color: white;
+      border-radius: 10px;
+      /* border: 1px solid ${(props) => props.theme.colors.themeOrange}; */
+      padding: 4px;
+    }
+  }
+
+  &:not(:placeholder-shown) + ${Label} {
+    color: ${(props) => props.theme.colors.themeOrange};
+    top: -10px;
+    font-size: 14px;
+    background-color: white;
+    border-radius: 10px;
+    /* border: 1px solid ${(props) => props.theme.colors.themeOrange}; */
+    padding: 4px;
+  }
+`;
+
+export const DIV = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const BtnBook = styled.button`
@@ -128,21 +195,22 @@ export const BtnBook = styled.button`
 
 export const Error1 = styled(ErrorMessage)`
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -18px;
+  right: 0;
   color: red;
+  font-size: 16px;
 `;
 
 export const Error2 = styled(ErrorMessage)`
   position: absolute;
-  top: 90px;
-  left: 0;
+  top: -18px;
+  right: 0;
   color: red;
 `;
 
 export const Error3 = styled(ErrorMessage)`
   position: absolute;
-  top: 180px;
-  left: 0;
+  top: -18px;
+  right: 0;
   color: red;
 `;
