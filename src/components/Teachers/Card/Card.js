@@ -25,19 +25,19 @@ import {
   SpanPrice,
   TrialBtn,
   CustomModal,
+  ContainerWithHeart,
 } from "./Card.styled";
 import icons from "../../../sprite.svg";
 import { useEffect, useRef, useState } from "react";
 import { TrialLessonForm } from "../../Forms/TrialLessonForm/TrialLessonForm";
+import { HeartIcon } from "../../Hearticon/HeartIcon";
 
-// import { HeartIcon } from "../../../../src/components/Hearticon/HeartIcon";
-
-export const Card = ({ teacher }) => {
+export const Card = ({ teacher, index }) => {
   const [readMore, setReadMore] = useState(false);
   const [showReadMore, setShowReadMore] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
-    // id,
+    id,
     avatar_url,
     name,
     surname,
@@ -90,25 +90,27 @@ export const Card = ({ teacher }) => {
         </SvgOnline>
       </div>
       <div>
-        <StatsContainer>
-          <ContainerWithSvg>
-            <svg width="16px" height="16px">
-              <use href={`${icons}#icon-book`}></use>
-            </svg>
-            <Item>Lessons online</Item>
-          </ContainerWithSvg>
-          <Item>Lessons done: {lessons_done}</Item>
-          <ContainerWithSvg>
-            <svg width="16px" height="16px">
-              <use href={`${icons}#icon-star`}></use>
-            </svg>
-            <Item>Rating: {rating}</Item>
-          </ContainerWithSvg>
-          <Item>
-            Price / 1 hour:&nbsp;<SpanPrice>{price_per_hour}$</SpanPrice>
-          </Item>
-        </StatsContainer>
-        {/* <HeartIcon teacher={teacher} index={index} /> */}
+        <ContainerWithHeart>
+          <StatsContainer>
+            <ContainerWithSvg>
+              <svg width="16px" height="16px">
+                <use href={`${icons}#icon-book`}></use>
+              </svg>
+              <Item>Lessons online</Item>
+            </ContainerWithSvg>
+            <Item>Lessons done: {lessons_done}</Item>
+            <ContainerWithSvg>
+              <svg width="16px" height="16px">
+                <use href={`${icons}#icon-star`}></use>
+              </svg>
+              <Item>Rating: {rating}</Item>
+            </ContainerWithSvg>
+            <Item>
+              Price / 1 hour:&nbsp;<SpanPrice>{price_per_hour}$</SpanPrice>
+            </Item>
+          </StatsContainer>
+          <HeartIcon teacher={teacher} id={id} />
+        </ContainerWithHeart>
         <Name>
           {name} {surname}
         </Name>
@@ -127,8 +129,8 @@ export const Card = ({ teacher }) => {
         </ContainerTeacherInfo>
         <div style={readMore ? null : InfoStyles} ref={ref}>
           <Experience>{experience}</Experience>
-          {reviews.map((review) => (
-            <ReviewContainer>
+          {reviews.map((review, index) => (
+            <ReviewContainer key={index}>
               <ReviewerInfo>
                 <div>
                   <ReviewerImg
@@ -176,13 +178,15 @@ export const Card = ({ teacher }) => {
         </div>
       </div>
 
-      <CustomModal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Trial Lesson Modal"
-      >
-        <TrialLessonForm teacher={teacher} closeModal={closeModal} />
-      </CustomModal>
+      <div style={{ overflowY: "hidden" }}>
+        <CustomModal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          contentLabel="Trial Lesson Modal"
+        >
+          <TrialLessonForm teacher={teacher} closeModal={closeModal} />
+        </CustomModal>
+      </div>
     </CardContainer>
   );
 };

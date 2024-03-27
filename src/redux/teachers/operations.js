@@ -6,26 +6,7 @@ const baseUrl =
 
 axios.defaults.baseURL = baseUrl;
 
-export const LIMIT = 4;
-
 export const fetchTeachers = createAsyncThunk(
-  "teachers/fetchTeachers",
-  async (page = 1, thunkAPI) => {
-    try {
-      const params = new URLSearchParams({
-        page,
-        limit: LIMIT,
-      });
-      const response = await axios.get(`/teachers.json?${params}`);
-      console.log(response.data);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const fetchAllTeachers = createAsyncThunk(
   "teachers/fetchAllTeachers",
   async (_, thunkAPI) => {
     try {

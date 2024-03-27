@@ -50,6 +50,13 @@ export const StatsContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 16px;
+`;
+
+export const ContainerWithHeart = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 64px;
   margin-bottom: 8px;
 `;
 
@@ -263,7 +270,7 @@ export const TrialBtn = styled.button`
 `;
 
 export const CustomModal = styled(Modal)`
-  overflow: auto;
+  overflow-y: scroll;
   position: relative;
   border-radius: 12px;
   max-width: 599px;

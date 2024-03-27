@@ -77,27 +77,6 @@ export const InputContainer = styled.div`
 
   margin-bottom: 40px;
   margin-top: 35px;
-
-  & > input {
-    /* border: 1px solid rgba(18, 20, 23, 0.1);
-    border-radius: 12px;
-    padding: 16px 16px 16px 18px;
-    width: 100%;
-    height: 54px;
-
-    font-weight: 400;
-    line-height: 1.375;
-    color: ${(props) => props.theme.colors.textColor};
-    transition: all 250ms ease; */
-
-    /* &::placeholder {
-      color: ${(props) => props.theme.colors.textColor};
-    } */
-
-    /* &:hover {
-      border: 1px solid ${(props) => props.theme.colors.themeOrange};
-    } */
-  }
 `;
 
 export const Label = styled.label`

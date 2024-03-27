@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
-import {
-  LIMIT,
-  fetchAllTeachers,
-  fetchTeachers,
-} from "../redux/teachers/operations";
+import { useEffect } from "react";
+import { fetchTeachers } from "../redux/teachers/operations";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectError,
-  selectGetAllTeachers,
   selectGetTeachers,
   selectIsLoading,
   selectPage,
@@ -15,35 +10,30 @@ import {
 import { Loader } from "../components/Loader/Loader";
 import { Container, TeachersContainer } from "../CommonStyles.styled";
 import { CardsList } from "../components/Teachers/CardsList/CardsList";
-import { LoadMore } from "../components/LoadMore/LoadMore";
+// import { LoadMore } from "../components/LoadMore/LoadMore";
 
 const Teachers = () => {
-  const [loadMore, setLoadMore] = useState(false);
+  // const [loadMore, setLoadMore] = useState(false);
 
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const teachers = useSelector(selectGetTeachers);
-  const allTeachers = useSelector(selectGetAllTeachers);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
     if (page === 1 && teachers.length === 0) {
       dispatch(fetchTeachers());
-      dispatch(fetchAllTeachers());
-      setLoadMore(true);
+      // setLoadMore(true);
     }
   }, [dispatch, page, teachers]);
 
-  const totalNumberOfPages = Math.ceil(allTeachers.length / LIMIT);
-  console.log(totalNumberOfPages);
-
-  const clickLoadMore = () => {
-    if (page < totalNumberOfPages) {
-      setLoadMore(true);
-      dispatch(fetchTeachers(page));
-    }
-  };
+  // const clickLoadMore = () => {
+  //   if (page < totalNumberOfPages) {
+  //     setLoadMore(true);
+  //     dispatch(fetchTeachers(page));
+  //   }
+  // };
 
   return (
     <Container>
@@ -54,9 +44,9 @@ const Teachers = () => {
         {teachers.length === 0 && !isLoading && (
           <p>Sorry, no matches were found. Please try again.</p>
         )}
-        {loadMore && page < totalNumberOfPages && (
+        {/* {loadMore && page < totalNumberOfPages && (
           <LoadMore clickLoadMore={clickLoadMore} />
-        )}
+        )} */}
       </TeachersContainer>
     </Container>
   );

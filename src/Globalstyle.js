@@ -24,6 +24,7 @@ max-width: 1440px;
  
 ::-webkit-scrollbar-track {
     background: transparent; 
+    border-radius: 12px; 
   }
 
  

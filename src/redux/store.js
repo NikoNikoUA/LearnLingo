@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { teachersReducer } from "./teachers/teachersSlice";
 // import { filterReducer } from "./filter/filterSlice";
+import { persistedFavTeachersReducer } from "./teachers/favTeachersSlice";
 import {
   persistStore,
   FLUSH,
@@ -25,6 +26,7 @@ import {
 const rootReducer = combineReducers({
   teachers: teachersReducer,
   // filter: persistedFilterReducer,
+  favTeachers: persistedFavTeachersReducer,
 });
 
 export const store = configureStore({
