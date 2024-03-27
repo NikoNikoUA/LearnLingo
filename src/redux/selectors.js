@@ -8,6 +8,6 @@ export const selectError = (state) => state.teachers.error;
 
 //selectors from favTeachersSlice
 
-export const selectFavTeachers = (state) => state.favTeachers.fav;
+export const selectFavTeachers = (state) => state.favTeachers.favorites;
 
 //selectors from filterSlice

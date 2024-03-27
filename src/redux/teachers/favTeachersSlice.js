@@ -14,8 +14,6 @@ export const favTeachersSlice = createSlice({
     },
     removeFavTeacher(state, action) {
       const { id } = action.payload;
-
-      console.log(id);
       const filteredFavorites = state.favorites.filter(
         (teacher) => teacher.id !== id
       );

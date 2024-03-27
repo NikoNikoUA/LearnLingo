@@ -151,7 +151,7 @@ export const ReadMoreBtn = styled.button`
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: ${(props) => props.theme.colors.textColor};
-  background-color: #f8f8f8;
+  background-color: white;
   border: none;
   margin-bottom: 32px;
 `;

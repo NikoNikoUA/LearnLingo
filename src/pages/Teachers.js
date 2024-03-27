@@ -15,7 +15,6 @@ const LIMIT_PER_PAGE = 4;
 
 const Teachers = () => {
   const [teacherCount, setTeacherCount] = useState(LIMIT_PER_PAGE);
-  // const [loadMore, setLoadMore] = useState(false);
 
   const dispatch = useDispatch();
   const teachers = useSelector(selectGetTeachers);
@@ -25,20 +24,17 @@ const Teachers = () => {
   useEffect(() => {
     if (teachers.length === 0) {
       dispatch(fetchTeachers());
-      // setLoadMore(true);
     }
   }, [dispatch, teachers]);
 
+  const limitedTeachers = teachers.slice(0, teacherCount);
+
   const clickLoadMore = () => {
     if (teacherCount >= teachers.length) {
-      // setLoadMore(false);
       return;
     }
     setTeacherCount((prevTeacherCount) => prevTeacherCount + LIMIT_PER_PAGE);
-    // setLoadMore(true);
   };
-
-  const limitedTeachers = teachers.slice(0, teacherCount);
 
   return (
     <section style={{ background: "#f8f8f8" }}>

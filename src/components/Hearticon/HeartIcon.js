@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 
 export const HeartIcon = ({ teacher, id }) => {
   const [isHeartFavorite, setIsHeartFavorite] = useState(false);
-  console.log(isHeartFavorite);
   const dispatch = useDispatch();
   const favTeachers = useSelector(selectFavTeachers);
 

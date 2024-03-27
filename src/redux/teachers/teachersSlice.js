@@ -14,8 +14,6 @@ export const teachersSlice = createSlice({
   name: "teachers",
   initialState: {
     teachers: [],
-    // allTeachers: [],
-    page: 1,
     isLoading: false,
     error: null,
   },
@@ -26,17 +24,9 @@ export const teachersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.teachers = [...state.teachers, ...action.payload];
-        // state.allTeachers = [...state.allTeachers, ...action.payload];
         state.page = state.page + 1;
       })
       .addCase(fetchTeachers.rejected, onHandlingRejected);
-    // .addCase(fetchAllTeachers.pending, onHandlingPending)
-    // .addCase(fetchAllTeachers.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    //   state.allTeachers = action.payload;
-    // })
-    // .addCase(fetchAllTeachers.rejected, onHandlingRejected);
   },
 });
 
