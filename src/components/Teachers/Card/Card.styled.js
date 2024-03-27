@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
   padding: 24px;
   border-radius: 24px;
   position: relative;
-  background-color: #f8f8f8;
+  background-color: white;
 
   display: flex;
   align-items: flex-start;

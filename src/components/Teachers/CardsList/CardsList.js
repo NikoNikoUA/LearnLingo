@@ -2,8 +2,7 @@ import { Loader } from "../../Loader/Loader";
 import { Card } from "../Card/Card";
 import { TeachersItem } from "./CardsList.styled";
 
-export const CardsList = ({ teachers }) => {
-  console.log(teachers);
+export const CardsList = ({ teachers, allTeachers }) => {
   if (!teachers) {
     <>
       <p>Loading...</p>

@@ -12,8 +12,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 font-size: 16px;
-padding: 20px 64px 32px;
-max-width: 1440px;
+
 
 
  ::-webkit-scrollbar {

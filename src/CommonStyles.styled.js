@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 0 64px;
-  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
+  padding: 20px 128px 32px;
+  max-width: 1440px;
 `;
 
 // ================= Home Page =================
@@ -14,6 +14,10 @@ export const HomePageContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 24px;
+`;
+
+export const PageCtn = styled.div`
+  padding: 20px 64px 32px;
 `;
 
 export const MainTextContainer = styled.div`
@@ -87,8 +91,10 @@ export const Btn = styled.button`
 `;
 
 export const StatsContainer = styled.div`
-  padding-top: 24px;
-  padding-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 64px 32px;
+  max-width: 1440px;
 `;
 
 export const StatsListContainer = styled.div`
